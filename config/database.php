@@ -64,6 +64,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
+            'strict' => true,
         ],
 
     ],
