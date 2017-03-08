@@ -85,7 +85,7 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/material">物资管理<i>beta</i></a>
+            <a class="navbar-brand" href="{{url('/material')}}">物资管理<i>beta</i></a>
         </div>
         @yield('search')
     </div>
