@@ -11,7 +11,8 @@
     @endsection
 @section('content')
     <h1>概览</h1>
-    <span class="pull-right"><a href="{{url('/material/add')}}"><button class="btn">create</button></a></span>
+    <hr>
+    <span><a href="{{url('/material/add')}}"><button class="btn">增加品类</button></a></span>
     <hr>
     <table class="table-responsive table table-striped">
         <thead>

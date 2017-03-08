@@ -5,7 +5,7 @@
 
     <hr>
     <h3>Info:</h3>
-    <table class="table-responsive table">
+    <table class="table-responsive table ">
         {!! Form::open(['url'=>'/material/detail/edit'])!!}
         <tr>
             <td>所属单位：</td>
@@ -28,13 +28,13 @@
         <tr>
             <td>可借数量：</td>
             <td>
-            <input type="text" class="form-control " readonly value={{$material->available}} name="available" id="available">
+{{--                {{$material->available}}--}}
+                <input type="text" class="form-control " disabled value={{$material->available}} name="available" id="available">
             </td>
         </tr>
         <tr>
             <td>
                 <input type="hidden" name='id' value="{{$material->id}}">
-
                 {!! Form::submit('修改',['class'=> 'btn btn-info form-control']) !!}
             </td>
         </tr>

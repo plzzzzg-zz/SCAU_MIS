@@ -112,5 +112,5 @@
     <p id="footer">&copy;Supported By NetMan</p>
 </footer>
 </body>
-@yield('js');
+@yield('js')
 </html>
