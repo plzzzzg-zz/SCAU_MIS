@@ -80,5 +80,12 @@ class MaterialController extends Controller
         $lend_info->save();
         return redirect()->action('MaterialController@detail',$material->id);
     }
-
+//      删除借出记录
+    public function delete_lend_info(Request $delete)
+    {
+        $delete_confirm = $delete->all();
+        $material = Material::find($delete_confirm['id']);
+        $lend_info = Lend_Info::where('id',$delete_confirm['lend_id'])->delete();
+        return redirect()->action('MaterialController@detail',$material->id);
+    }
 }

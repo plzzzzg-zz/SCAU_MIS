@@ -1,13 +1,13 @@
 @extends('app')
 @section('search')
-    <div>
-        <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">提交</button>
-        </form>
-    </div>
+    {{--<div>--}}
+        {{--<form class="navbar-form navbar-left" role="search">--}}
+            {{--<div class="form-group">--}}
+                {{--<input type="text" class="form-control" placeholder="Search">--}}
+            {{--</div>--}}
+            {{--<button type="submit" class="btn btn-default">提交</button>--}}
+        {{--</form>--}}
+    {{--</div>--}}
     @endsection
 @section('content')
     <h1>概览</h1>

@@ -72,6 +72,13 @@
                             </button>
                         </td>
                         @endif
+                    <td>
+                        {!! Form::open(['url'=>'/material/detail/delete'])!!}
+                            <input type="hidden" name='id' value="{{$material->id}}">
+                            <input type="hidden" name='lend_id' value="{{$lend_info->id}}">
+                            {!! Form::submit('删除记录',['class'=> 'btn btn-danger ']) !!}
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
             @endforeach
         </table>
