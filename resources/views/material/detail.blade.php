@@ -6,23 +6,40 @@
     <hr>
     <h3>Info:</h3>
     <table class="table-responsive table">
+        {!! Form::open(['url'=>'/material/detail/edit'])!!}
         <tr>
             <td>所属单位：</td>
-            <td>{{$material->belongs_to}}</td>
+            <td>
+                <input type="text" class="form-control fix" readOnly value={{$material->belongs_to}} name="belongs_to" id="belongs_to">
+            </td>
         </tr>
         <tr>
             <td>存放位置：</td>
-            <td>{{$material->place}}</td>
+            <td>
+                <input type="text" class="form-control fix" readOnly  value={{$material->place}} name="place" id="place">
+            </td>
         </tr>
         <tr>
             <td>总量：</td>
-            <td>{{$material->total}}</td>
+            <td>
+                <input type="text" class="form-control fix" readonly value={{$material->total}} name="total" id="total">
+            </td>
         </tr>
         <tr>
             <td>可借数量：</td>
-            <td>{{$material->available}}</td>
+            <td>
+            <input type="text" class="form-control " readonly value={{$material->available}} name="available" id="available">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name='id' value="{{$material->id}}">
+
+                {!! Form::submit('修改',['class'=> 'btn btn-info form-control']) !!}
+            </td>
         </tr>
     </table>
+    {!! Form::close() !!}
     <span class="">
         <a href="{{action('MaterialController@add_lend_info',[$material->id])}}">
             <button class="btn">增加记录</button>
@@ -85,6 +102,15 @@
     @else
         <h3>无借出记录</h3>
     @endif
+    @endsection
+    @section('js')
+        <script language="JavaScript">
+            $(document).ready(function Write() {
+               $(".fix").click(function () {
+                   $(this).removeAttr("readonly");
+               })
+            });
+        </script>
 @stop
 
 

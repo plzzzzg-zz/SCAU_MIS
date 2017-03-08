@@ -88,4 +88,16 @@ class MaterialController extends Controller
         $lend_info = Lend_Info::where('id',$delete_confirm['lend_id'])->delete();
         return redirect()->action('MaterialController@detail',$material->id);
     }
+
+    public function edit_material_info(Request $request)
+    {
+        $input = $request->all();
+        $material = Material::find($input['id']);
+        $material->belongs_to=$input['belongs_to'];
+        $material->place=$input['place'];
+        $material->total=$input['total'];
+        $material->available=$input['total']-$material->lend_num;
+        $material->save();
+        return redirect()->action('MaterialController@detail',$material->id);
+    }
 }
