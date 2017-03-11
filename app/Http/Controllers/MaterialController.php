@@ -45,14 +45,14 @@ class MaterialController extends Controller
     }
 //      保存借出信息
     public function store_lend_info(Request $request){
-//        $this->validate($request,[
-//            'lend_to'=>'required',
-//            'lend_contact'=>'required',
-//            'lend_num'=>'required|max:',
-//            'should_return_time'=>'required|date',
-//            'lend_from_contact'=>'required',
-//            'lend_from'=>'required',
-//        ]);
+        $this->validate($request,[
+            'lend_to'=>'required',
+            'lend_contact'=>'required',
+            'lend_from'=>'required',
+            'lend_from_contact'=>'required',
+            'lend_num'=>'required|integer',
+            'should_return_time'=>'required|date|after:today',
+        ]);
         $input = $request->all();
         Lend_Info::create($input);
         $material = Material::find($input['redirect']);
@@ -85,6 +85,11 @@ class MaterialController extends Controller
     {
         $delete_confirm = $delete->all();
         $material = Material::find($delete_confirm['id']);
+        if(strcmp($delete_confirm['status'], '未归还')){
+            $material->lend_num-=$delete_confirm['lend_num'];
+            $material->available+=$delete_confirm['lend_num'];
+            $material->save();
+        }
         $lend_info = Lend_Info::where('id',$delete_confirm['lend_id'])->delete();
         return redirect()->action('MaterialController@detail',$material->id);
     }
