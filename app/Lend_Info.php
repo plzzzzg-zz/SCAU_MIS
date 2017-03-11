@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Lend_Info extends Model
@@ -17,4 +18,15 @@ class Lend_Info extends Model
         'note',
     ];
     protected $table='lend_info';
+//    protected $dates ='lend_time';
+
+//    public function setLendTimeAttribute($date){
+//        $this->attributes['lend_time'] = Carbon::createFromFormat('Y-m-d',$date);
+//    }
+
+    public function scopeNotreturned($query)
+    {
+        $query->where('status','未归还');
+    }
 }
+

@@ -39,7 +39,7 @@ class MaterialController extends Controller
     public function detail($id)
     {
         $material = Material::findorfail($id);
-        $lend_infos = Lend_Info::latest()->get();
+        $lend_infos = Lend_Info::latest()->notreturned()->get();
         $lend_infos = $lend_infos->where('name',$material->name);
         return view('material.detail',compact('material','lend_infos'));
     }
