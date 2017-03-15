@@ -35,10 +35,18 @@
             <td>
                 <input type="hidden" name='id' value="{{$material->id}}">
                 {!! Form::submit('修改',['class'=> 'btn btn-info form-control']) !!}
+                {!! Form::close() !!}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {!! Form::open(['url'=>'/material/delete']) !!}
+                    <input type="hidden" name='id' value="{{$material->id}}">
+                {!! Form::submit('删除',['class'=>'btn  btn-danger form-control del_material']) !!}
+                {!! Form::close() !!}
             </td>
         </tr>
     </table>
-    {!! Form::close() !!}
     <span class="">
         <a href="{{action('MaterialController@add_lend_info',[$material->id])}}">
             <button class="btn">增加记录</button>
@@ -47,7 +55,7 @@
     <hr>
     @if($lend_infos->contains('name',$material->name))
 
-        <table class="table-responsive table">
+        <table class="table-responsive table lend_info" id="len_info">
             <thead>
             <td>借给</td>
             <td>联系电话</td>
@@ -110,9 +118,28 @@
                $(".fix").click(function () {
                    $(this).removeAttr("readonly");
                });
-                $(".del").click(function () {
-                    confirm('确认删除？');
+               $(".del").click(function () {
+                   if(confirm('确定删除？')==true){
+                       return true;
+                   } else {
+                       return false;
+                   }
                 });
+               $('.del_material').click(function () {
+                   if($('table.lend_info').length>0){
+                       if(confirm('还有物资信息，确定删除？')==true){
+                           return true;
+                       } else {
+                           return false;
+                       }
+                   }else {
+                       if(confirm('确定删除？')==true){
+                           return true;
+                       } else {
+                           return false;
+                       }
+                   };
+               });
             });
         </script>
 @stop

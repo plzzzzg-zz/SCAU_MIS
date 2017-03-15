@@ -15,6 +15,8 @@ Route::get('/','SitesController@index');
 Route::get('/material','MaterialController@index');
 Route::get('/material/add','MaterialController@add');
 Route::post('/material/return','MaterialController@return_confirm');
+Route::post('/material/delete','MaterialController@del_material');
+
 Route::post('/material/detail/delete','MaterialController@delete_lend_info');
 Route::post('/material/detail/edit','MaterialController@edit_material_info');
 

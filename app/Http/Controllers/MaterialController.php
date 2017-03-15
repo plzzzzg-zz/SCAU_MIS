@@ -93,7 +93,7 @@ class MaterialController extends Controller
         $lend_info = Lend_Info::where('id',$delete_confirm['lend_id'])->delete();
         return redirect()->action('MaterialController@detail',$material->id);
     }
-
+//      修改物资信息
     public function edit_material_info(Request $request)
     {
         $input = $request->all();
@@ -104,5 +104,13 @@ class MaterialController extends Controller
         $material->available=$input['total']-$material->lend_num;
         $material->save();
         return redirect()->action('MaterialController@detail',$material->id);
+    }
+//      删除物资
+    public function del_material(Request $request)
+    {
+        $input = $request->all();
+        $material = Material::find($input['id']);
+        $material->delete();
+        return redirect()->action('MaterialController@index');
     }
 }
