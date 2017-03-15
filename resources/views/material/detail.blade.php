@@ -2,7 +2,6 @@
 @section('content')
     <h1>{{$material->name}}</h1>
 
-
     <hr>
     <h3>Info:</h3>
     <table class="table-responsive table ">
@@ -95,7 +94,7 @@
                             <input type="hidden" name='status' value="{{$material->status}}">
                             <input type="hidden" name='lend_num' value="{{$material->lend_num}}">
                             <input type="hidden" name='lend_id' value="{{$lend_info->id}}">
-                            {!! Form::submit('删除记录',['class'=> 'btn btn-danger ']) !!}
+                            {!! Form::submit('删除记录',['class'=> 'btn btn-danger del','id' =>'del' ]) !!}
                         {!! Form::close() !!}
                     </td>
                 </tr>
@@ -106,11 +105,14 @@
     @endif
     @endsection
     @section('js')
-        <script language="JavaScript">
+        <script language="JavaScript" type="text/javascript">
             $(document).ready(function Write() {
                $(".fix").click(function () {
                    $(this).removeAttr("readonly");
-               })
+               });
+                $(".del").click(function () {
+                    confirm('确认删除？');
+                });
             });
         </script>
 @stop

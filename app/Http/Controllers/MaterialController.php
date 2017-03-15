@@ -51,7 +51,7 @@ class MaterialController extends Controller
             'lend_from'=>'required',
             'lend_from_contact'=>'required',
             'lend_num'=>'required|integer',
-            'should_return_time'=>'required|date|after:today',
+            'should_return_time'=>'date|after:today',
         ]);
         $input = $request->all();
         Lend_Info::create($input);
