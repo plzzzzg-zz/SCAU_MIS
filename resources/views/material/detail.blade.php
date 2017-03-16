@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <td>
-                {!! Form::open(['url'=>'/material/delete']) !!}
+                {!! Form::open(['url'=>'/material/delete'],compact('material')) !!}
                     <input type="hidden" name='id' value="{{$material->id}}">
                 {!! Form::submit('删除',['class'=>'btn  btn-danger form-control del_material']) !!}
                 {!! Form::close() !!}
